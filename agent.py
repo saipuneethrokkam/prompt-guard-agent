@@ -124,7 +124,7 @@ def build_graph(llm, guard=None, threshold: float = 0.5):
     return g.compile()
 
 
-def make_llm(model: str = "llama-3.3-70b-versatile"):
+def make_llm(model: str = "openai/gpt-oss-120b"):
     from langchain_groq import ChatGroq  # needs GROQ_API_KEY in the environment
     return ChatGroq(model=model, temperature=0)
 
@@ -134,7 +134,7 @@ def main():
     p.add_argument("--no-guard", action="store_true")
     p.add_argument("--guard-path", default="guard_model")
     p.add_argument("--threshold", type=float, default=0.5)
-    p.add_argument("--model", default="llama-3.3-70b-versatile")
+    p.add_argument("--model", default="openai/gpt-oss-120b")
     a = p.parse_args()
 
     guard = None
